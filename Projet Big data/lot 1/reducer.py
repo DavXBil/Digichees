@@ -36,11 +36,11 @@ for line in sys.stdin:
     }
     listClient.append(client)
 
-listDeCommandes = pd.DataFrame(listClient).head(100)
+listDeCommandes = pd.DataFrame(listClient)
 
 #client_sum_quantite = listDeCommandes.groupby('codeClient','nomProduit')['quantiteCommande'].sum()
 
-client_sum_pointsFidelite= listDeCommandes.groupby('codeClient')['pointsFidelite'].sum().reset_index()
+client_sum_pointsFidelite= listDeCommandes.groupby('codeClient')['pointsFidelite'].sum()
 
 top10 = client_sum_pointsFidelite.nlargest(10, 'pointsFidelite')
 
