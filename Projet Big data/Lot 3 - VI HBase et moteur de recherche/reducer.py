@@ -2,6 +2,7 @@ import sys
 import happybase
 
 # Connexion
+# connexion = happybase.Connection('127.0.0.1', 9090) # Connexion VM
 connection = happybase.Connection('127.0.0.1', 9090)
 connection.open()
 table = connection.table('digicheese_data')

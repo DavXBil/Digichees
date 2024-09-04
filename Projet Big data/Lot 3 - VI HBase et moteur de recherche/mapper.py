@@ -9,6 +9,7 @@ reader = csv.reader(sys.stdin)
 # Ignorer l'en-tête du CSV
 header = next(reader, None)
 
+# Fonction pour convertir en int ou en float
 def safe_convert(value, target_type):
     try:
         if target_type == int:
@@ -20,6 +21,7 @@ def safe_convert(value, target_type):
     except ValueError:
         return 0
 
+# Pour chaque ligne des données csv
 for line in reader:
 
     # Convertir la date en objet datetime
@@ -34,8 +36,11 @@ for line in reader:
         print(f"Attention : La ligne {line} n'a pas exactement 25 colonnes. Cette ligne sera ignorée.")
         continue
     
+    # On ignore les données qui ont une valeur nulle
     for value in line:
-        if value == None:
+        print(value)
+        print(type(value))
+        if value is None:
             continue
 
     code_cli = line[0]
@@ -64,9 +69,12 @@ for line in reader:
     prix_cond = safe_convert(line[23], float)
     pu_obj = safe_convert(line[24], float) 
 
-    print('%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%i;%s;%s;%s;%s;%i;%s;%s;%s;%i;%i;%s;%s;%i;%i' % (
+    print('%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%i;%s;%s;%s;%s;%i;%s;%s;%s;%f;%i;%s;%s;%f;%f' % (
         code_cli, genre_cli, nom_cli, prenom_cli, cp_cli, ville_cli, code_cde,
         date_cde, timbre_cli, timbre_cde, nb_colis, cheque_cli, barchive, bstock,
         code_obj, qte,colis, lib_obj, taille_obj, poids_obj, points, indisp_obj,
         lib_condit, prix_cond, pu_obj
         ))
+
+# Commande à entrer dans terminal linux pour tester
+# cat dataw_fro03_mini_1000.csv | python3 mapper.py
