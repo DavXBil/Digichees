@@ -84,7 +84,7 @@ for line in reader:
     #puobj = safe_convert(line[24], float) 
 
     # Si l'annee de commande est entre 2008 et 2021 on continue , sinon next 
-    if (anneecde != None and anneecde >= 2008 and anneecde <= 2012):
+    if (anneecde != None and anneecde >= 20011 and anneecde <= 2016):
 
     # Si le code de departement est dans la liste listeDepartement 
         if (codedep != None and codedep in listeDepartement ):
