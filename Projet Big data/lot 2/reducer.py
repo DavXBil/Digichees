@@ -32,7 +32,7 @@ for line in sys.stdin:
     }
     listCommande.append(commande)
 
-dfCmd = pd.DataFrame(listCommande).head(100)
+dfCmd = pd.DataFrame(listCommande)
 
 cmd_sum_timbre_cmd = dfCmd.groupby('codeCommande')['timbreCommande'].sum()
 
